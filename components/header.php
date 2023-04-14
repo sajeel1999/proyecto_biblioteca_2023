@@ -14,6 +14,11 @@
             <link rel="icon" href="<?=IMGS_ROOT?>t.webp" sizes="192x192">
             <link rel="stylesheet" href="<?=BOOTSTRAP_ROOT?>css/bootstrap.min.css">
             <link rel="stylesheet" href="<?=BOOTSTRAP_ROOT?>bootstrap-icons/bootstrap-icons.css">
-            <link rel="stylesheet" href="<?=CSS_ROOT?>main.css">
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="<?=BOOTSTRAP_ROOT?>js/bootstrap.bundle.min.js"></script> 
+            <script src="<?=BOOTSTRAP_ROOT?>js/bootstrap.min.js"></script>
+            <link rel="stylesheet" href="<?=CSS_ROOT?>navbar.css">
+            <link rel="stylesheet" href="<?=CSS_ROOT?>login.css">
+            <link rel="stylesheet" href="<?=CSS_ROOT?>inicio.css">
         </head>
         <body>

@@ -1,0 +1,50 @@
+<div class="container g--bg-color-cream mt-3 mb-4">
+        <div class="container pb-4">
+           <div id="faqsCollapse mb-4">
+                <?php
+                include "../../locale/es-ES/es.php";
+                $keys = array_keys($lang["collapseFaqs"]);
+
+                for ($x = 0; $x<count($lang["collapseFaqs"]);$x++){
+                    ?>
+                    <div class="card rounded-0 my-3 g--bg-color-darkBlue g--border-color-darkBlue">
+                        <div class="card-header border-0 bg-transparent" id="faqs<?=$keys[$x]?>">
+                            <h5 class="mb-0">
+                                <button class="text-uppercase g--color-cream text-start g--font-size-16  g--bg-color-darkBlue g--border-0px" data-bs-toggle="collapse" href="#collapseFaqs<?=$keys[$x]?>" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    <?=$lang["collapseFaqs"][$keys[$x]]["titulo"]?>
+                                </button>
+                                <button class="g--bg-color-darkBlue text-uppercase text-primary text-start g--font-size-16 g--border-0px float-end" data-bs-toggle="collapse" href="#collapseFaqs<?=$keys[$x]?>" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    <i class="fa-solid fa-plus g--color-cream" id="collapseFaqs<?=$keys[$x]?>Plus"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseFaqs<?=$keys[$x]?>" class="collapse" data-parent="#faqs<?=$keys[$x]?>">
+                            <div class="card-body g--bg-color-cream g--color-darkBlue">
+                                
+                                <?=$lang["collapseFaqs"][$keys[$x]]["cuerpo"]?>
+                                <?php 
+                                    
+                                    if(!empty($lang["collapseFaqs"][$keys[$x]]["boton"])) {;
+                                    
+                                    ?>
+                            <div class="mt-5 mb-3">
+                                   
+                                    <a href="<?=$lang["collapseFaqs"][$keys[$x]]["enlace"]?>" 
+                                    <?php if(isset($lang["collapseFaqs"][$keys[$x]]["download"]) && $lang["collapseFaqs"][$keys[$x]]["download"]) { echo 'download'; }?> 
+                                    class="text-white text-uppercase g--border-white py-2 px-2"><?=$lang["collapseFaqs"][$keys[$x]]["boton"]?></a>
+                                    
+                            </div>
+
+                            <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+
+
+const SITE_ROOT = 'https://localhost/sonrias/';//local
