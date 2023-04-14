@@ -32,7 +32,7 @@
                         <a class="nav-link text-white g--nav-text text-center" href="#">Galería</a>
                     </li>
                     <li class="nav-item g--nav-item-size">
-                        <a class="nav-link text-white g--nav-text text-center" href="#">Contacto</a>
+                        <a class="nav-link text-white g--nav-text text-center" href="<?= SITE_ROOT ?>pages/contacto.php">Contacto</a>
                     </li>
                     <li class="nav-item g--nav-item-size-special">
                         <a class="nav-link text-white g--nav-text text-center" href="<?= SITE_ROOT ?>pages/infoBiblioteca.php">Sobre biblioteca</a>
