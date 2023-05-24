@@ -46,7 +46,8 @@
 }
 
 .g--btn-normal-secundary--no-hover{
-    border-color: black !important;
+    border-color: rgba(0, 0, 0, 0.675) !important;
+    border: 0.5px solid !important;
 }
 
 .g--btn-normal-secundary--no-hover:hover{
@@ -57,9 +58,23 @@
 
 }
 
+.g--fs-20{
+    font-size: 20px;
+}
+
+
+.g--height-30vh{
+    height: 30vh !important;
+}
+
 .user-icon{
     width: 70px;
     height: auto;
+}
+
+
+.g--background-color-orange-tranparent{
+    background-color: rgba(246, 208, 137, 0.579) !important;
 }
 
 .g--icon-border{
@@ -86,5 +101,6 @@
     .g--page-title{
         font-size: 30px !important;
     }
+    
 
 }

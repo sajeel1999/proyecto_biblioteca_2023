@@ -1,226 +1,57 @@
 <?php
+session_start();
 include "functions/config.php";
 include "components/header.php";
 include "components/navbar.php";
 ?>
 
-<div class="container-fluid mx-auto  d-flex flex-row mt-5 ">
+<?php
+include "functions/getUser.php";
 
-    <div class="g--efecto-background p-2 d-flex flex-row g--heigh-50px">
-        <h4 class="mb-2 fw-bold text-white ml-1 g--font-size-16px">Libros destacados</h4>
+
+?>
+
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center main-content mt-5 mb-5">
+    <div class="container d-flex flex-row text-center mt-5 mx-5 mb-3">
+        <div class="col-md-6 text-center d-none d-sm-block">
+            <img class="image-animated" src="<?= IMGS_ROOT ?>mainPage.gif" alt="">
+        </div>
+        <div class="col-md-6 d-flex flex-column mx-auto g--btn-width-400 border-primary border-1">
+            <p class="g--page-title">Gestiona tus</p>
+            <p class="g--page-title">Libros online</p>
+            <div class="form-container mt-2">
+                <form method="post">
+                    <?php if (isset($errorMsg)) : ?>
+                        <div class="alert alert-danger"><?= $errorMsg ?></div>
+                    <?php endif; ?>
+                    <div class="form-group text-left mt-2 ">
+                        <img class="user-icon img-fluid g--icon-border" src="<?= IMGS_ROOT ?>user-icon.webp" alt="">
+                    </div>
+                    <div class="form-group text-left mt-4">
+                        <input type="email" id= "email" name="email" class="form-control mb-2 g--btn-normal-secundary g--btn-normal-secundary--no-hover" id="correo" placeholder="Introduzca su correo electrónico">
+                    </div>
+                    <div class="form-group text-left">
+                        <input type="password" id = "pssword" name="pssword" class="form-control mb-2 g--btn-normal-secundary g--btn-normal-secundary--no-hover" id="password" placeholder="Introduzca su contraseña">
+                    </div>
+
+                    <div class="button-group d-flex flex-column mt-2 justify-content-center ">
+                        <button type="submit" class="btn-sm py-2 g--btn-normal-secundary">Iniciar sesión</button>
+                        <a href="mailto:biblioteca.gbm@gmail.com" class="btn-sm py-2 mt-2 g--btn-normal-primary">Registrarse</a>
+                        <a href="mailto:biblioteca.gbm@gmail.com" class="btn-sm py-2 mt-2 g--btn-danger-secundary">¿Olvidó su contraseña?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-
-    <i class="bi bi-caret-left-fill g--icon-flecha "></i>
-
-    <!-- <div class="gradient-line"></div> -->
-
-</div>
-
-<div class="container-fluid mx-auto d-flex flex-row flex-wrap mt-2 justify-content-center g--contenedor-panel">
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l1.png" alt="sin imagen">
-        <p class="c-card__title ">Un mundo feliz</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l2.jpg" alt="sin imagen">
-        <p class="c-card__title ">La chica mecánica</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l3.jpg" alt="sin imagen">
-        <p class="c-card__title ">HyperIon</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l8.jpg" alt="sin imagen">
-        <p class="c-card__title ">Cielo en llamas</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l5.jpg" alt="sin imagen">
-        <p class="c-card__title ">El bosque oscuro</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l9.jpg" alt="sin imagen">
-        <p class="c-card__title ">Hamlet</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l7.jpg" alt="sin imagen">
-        <p class="c-card__title ">Juego tronos</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l10.jpg" alt="sin imagen">
-        <p class="c-card__title ">El Rey Arturo</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l11.jpg" alt="sin imagen">
-        <p class="c-card__title ">Don Quijote </p>
-        <p class="c-card__title ">de la mancha</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l10.jpg" alt="sin imagen">
-        <p class="c-card__title ">El Rey Arturo</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l10.jpg" alt="sin imagen">
-        <p class="c-card__title ">El Rey Arturo</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l10.jpg" alt="sin imagen">
-        <p class="c-card__title ">El Rey Arturo</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l10.jpg" alt="sin imagen">
-        <p class="c-card__title ">El Rey Arturo</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l10.jpg" alt="sin imagen">
-        <p class="c-card__title ">El Rey Arturo</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l10.jpg" alt="sin imagen">
-        <p class="c-card__title ">El Rey Arturo</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l10.jpg" alt="sin imagen">
-        <p class="c-card__title ">El Rey Arturo</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    
-
-</div>
-
-
-<div class="container-fluid d-flex flex-row mt-5 mx-auto">
-
-    <div class="g--efecto-background g--efecto-mb p-2 d-flex flex-row g--heigh-50px">
-        <h4 class="mb-2 fw-bold text-white ml-1 g--font-size-24px ">Estrenos</h4>
-    </div>
-
-    <i class="bi bi-caret-left-fill g--icon-flecha "></i>
-
-    <!-- <div class="gradient-line"></div> -->
-
-</div>
-
-<div class="container-fluid mx-auto d-flex flex-row flex-wrap mt-2 justify-content-center g--contenedor-panel">
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l1.png" alt="sin imagen">
-        <p class="c-card__title ">Un mundo feliz</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l2.jpg" alt="sin imagen">
-        <p class="c-card__title ">La chica mecánica</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l3.jpg" alt="sin imagen">
-        <p class="c-card__title ">HyperIon</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l8.jpg" alt="sin imagen">
-        <p class="c-card__title ">Cielo en llamas</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l5.jpg" alt="sin imagen">
-        <p class="c-card__title ">El bosque oscuro</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l9.jpg" alt="sin imagen">
-        <p class="c-card__title ">Hamlet</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l7.jpg" alt="sin imagen">
-        <p class="c-card__title ">Juego tronos</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l10.jpg" alt="sin imagen">
-        <p class="c-card__title ">El Rey Arturo</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l11.jpg" alt="sin imagen">
-        <p class="c-card__title ">Don Quijote </p>
-        <p class="c-card__title ">de la mancha</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l10.jpg" alt="sin imagen">
-        <p class="c-card__title ">El Rey Arturo</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l10.jpg" alt="sin imagen">
-        <p class="c-card__title ">El Rey Arturo</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l10.jpg" alt="sin imagen">
-        <p class="c-card__title ">El Rey Arturo</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l10.jpg" alt="sin imagen">
-        <p class="c-card__title ">El Rey Arturo</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l10.jpg" alt="sin imagen">
-        <p class="c-card__title ">El Rey Arturo</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l10.jpg" alt="sin imagen">
-        <p class="c-card__title ">El Rey Arturo</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
-    <div class="w-auto c-card text-center">
-        <img class="c-card__img" src="<?= IMGS_ROOT ?>libros/l10.jpg" alt="sin imagen">
-        <p class="c-card__title ">El Rey Arturo</p>
-        <p class="c-card__text ">leer resumen</p>
-    </div>
-
 </div>
 
 
 
-<?php include  "components/copyRight-footer.php"; ?>
+
+
+
+<div class="espacio_arriba">
+
+</div>
+
+<?php include "components/copyRight-footer.php"; ?>

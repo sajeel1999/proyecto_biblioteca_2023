@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include "../functions/config.php";
 include "../components/header.php";
 include "../components/navbar.php";
@@ -48,6 +48,6 @@ include "../components/navbar.php";
 
 
 
-<?php include "../components/nav_footer.php"; ?>
+
 
 <?php include "../components/copyRight-footer.php"; ?>

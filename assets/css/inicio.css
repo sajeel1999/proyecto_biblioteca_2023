@@ -1,3 +1,10 @@
+:root {
+    --darkBlue: #1D5362;
+    --white: #ffffff; 
+    --cream: #E5DDCF;
+  }
+
+
 .gradient-line {
     width: calc(100% - 85%);
     /* Ancho de la línea */
@@ -65,6 +72,14 @@
 
 .g--font-size-24px{
     font-size: 24px;
+}
+
+.g--bg-color-darkBlue{
+    background-color:var(--darkBlue) !important;
+}
+
+.g--border-color-darkBlue{
+    border-color: var(--darkBlue);
 }
 
 .espacio_arriba{

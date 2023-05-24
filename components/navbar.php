@@ -1,3 +1,6 @@
+<?php 
+    // session_start();
+?>
 <nav class=" navbar sticky-top navbar-expand-lg navbar-light g--bg-color g--nav-height">
     <div class="container-fluid g--margin-top--5px">
         <a class="navbar-brand g--nav-title ms-3 text-white" href="<?= SITE_ROOT ?>index.php">
@@ -23,13 +26,13 @@
 
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 ">
                     <li class="nav-item g--nav-item-size">
-                        <a class="nav-link text-white g--nav-text active text-center" href="<?= SITE_ROOT ?>index.php">Inicio</a>
+                        <a class="nav-link text-white g--nav-text active text-center" href="<?= SITE_ROOT ?>pages/inicio.php">Inicio</a>
                     </li>
                     <li class="nav-item g--nav-item-size">
                         <a class="nav-link text-white g--nav-text active text-center" aria-current="page" href="<?= SITE_ROOT ?>pages/libros.php">Libros</a>
                     </li>
                     <li class="nav-item g--nav-item-size">
-                        <a class="nav-link text-white g--nav-text text-center" href="#">Galería</a>
+                        <a class="nav-link text-white g--nav-text text-center" href="<?= SITE_ROOT ?>pages/galeria.php">Galería</a>
                     </li>
                     <li class="nav-item g--nav-item-size">
                         <a class="nav-link text-white g--nav-text text-center" href="<?= SITE_ROOT ?>pages/contacto.php">Contacto</a>
@@ -38,7 +41,20 @@
                         <a class="nav-link text-white g--nav-text text-center" href="<?= SITE_ROOT ?>pages/infoBiblioteca.php">Sobre biblioteca</a>
                     </li>
                     <li class="nav-item g--nav-item-size">
-                        <a class="nav-link text-white g--nav-text text-center" href="<?= SITE_ROOT ?>pages/login.php">Login</a>
+                        <?php
+                            if (!isset($_SESSION['userLogeado'])) {
+                        ?>
+                                <a class="nav-link text-white g--nav-text text-center" href="<?= SITE_ROOT ?>index.php">Login</a>
+                        <?php
+                            }else{
+                        ?>
+                                 <li class="nav-item g--nav-item-size">
+                                    <a class="nav-link text-white g--nav-text text-center" href="<?= SITE_ROOT ?>pages/prestaciones.php">Registros</a>
+                                </li>
+                                <a class="nav-link text-white g--nav-text text-center" href="<?= SITE_ROOT ?>pages/logOut.php">Logout</a> 
+                        <?php
+                            }
+                        ?>
                     </li>
                 </ul>
             </div>

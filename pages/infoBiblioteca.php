@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../functions/config.php";
 include "../components/header.php";
 include "../components/navbar.php";
