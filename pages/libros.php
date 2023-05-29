@@ -19,9 +19,15 @@ include "../components/navbar.php";
 include_once("../functions/getLibros.php");
 
 
-// var_dump($libros); die;
+
 ?>
 <div class="container-fluid mx-auto d-flex flex-row flex-wrap mt-2 justify-content-center g--contenedor-panel">
+    <?php if (isset($msg)) : ?>
+        <div class="alert alert-success"><?= $msg ?></div>
+    <?php endif; ?>
+    <?php if (isset($msgDevolucion)) : ?>
+        <div class="alert alert-success"><?= $msgDevolucion ?></div>
+    <?php endif; ?>
 
     <?php
     for ($posLibro = 0; $posLibro < count($libros); $posLibro++) {
@@ -56,33 +62,40 @@ include_once("../functions/getLibros.php");
                     <div class="modal-footer">
 
                         <?php
-                        
-                            
+
+
                         if (!isset($_SESSION["userLogeado"])) {
                         ?>
 
-                            
+
                             <a class="text-decoration-none btn btn-primary " href="<?= SITE_ROOT ?>index.php" class="mail">login</a>
                             <?php
 
                         } else {
-                            $habilitado = false; 
+                            $habilitado = false;
+                            $msgText = false;
                             if ($libros[$posLibro]['disponible'] == 0) {
                                 for ($posRegistro = 0; $posRegistro < count($prestaciones); $posRegistro++) {
-                                    if ($prestaciones[$posRegistro]['id_libro'] == $libros[$posLibro]['id'] && $habilitado == false) {
+                                    if ($prestaciones[$posRegistro]['id_libro'] == $libros[$posLibro]['id'] && $habilitado == false && $prestaciones[$posRegistro]['estado'] != "En espera") {
                                         $habilitado = true;
                             ?>
-                                <form action="../functions/devolver.php" method="post">
-                                    <input hidden type="number" name="idLibro" value="<?php echo $libros[$posLibro]['id'] ?>">
-                                    <div class="btn-group">
-                                        <button class="btn btn-primary" type="submit">   
-                                            Devolver
-                                        </button>
-                                    </div>
-                                </form>
+                                        <form action="../functions/devolver.php" method="post">
+                                            <input hidden type="number" name="idLibro" value="<?php echo $libros[$posLibro]['id'] ?>">
+                                            <div class="btn-group">
+                                                <button class="btn btn-primary" type="submit">
+                                                    Devolver
+                                                </button>
+                                            </div>
+                                        </form>
                                 <?php
 
 
+                                    }else{
+                                        if($msgText == false){
+                                            $msgText = true;
+                                            echo "<p class = 'g--font-size-16px'> Pendiente devolución</p>";
+                                        }
+                                        
                                     }
                                 }
                             } else {
@@ -91,7 +104,7 @@ include_once("../functions/getLibros.php");
                                     <input hidden type="number" name="registroLibro" value="<?php echo $libros[$posLibro]['id'] ?>">
                                     <div class="btn-group">
                                         <button class="btn btn-primary" type="submit">
-                                            
+
                                             Prestar
                                         </button>
                                     </div>

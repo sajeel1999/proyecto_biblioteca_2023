@@ -6,11 +6,11 @@ require_once('../assets/libs/tcpdf/tcpdf.php');
 include_once("../functions/getUser.php");
 include_once("../functions/getLibros.php");
 include "../functions/config.php";
+include_once("../functions/listaPrestaciones.php");
 
 
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-include_once("../functions/getPrestaciones.php");
 
 $pdf->setAutoPageBreak(true,3);
 $pdf->setPrintHeader(false);
@@ -47,12 +47,11 @@ $rowHeader = '<img class = "imgPortada" src ="../assets/images/portada.webp"><br
  '<h4>GBM La ELIANA '. $city . '</h4>'. 
  '<h5>Ficha usuario: '. $nameUser .'</h5>'.
  '<h6>'. $fechaActual .'</h6>'
-//  '<h6>Hora: '. $horaActual .'</h6> <br>'
- 
+
  ;
 
 $rowProduct = '';
-// var_dump($resultado[2]['fecha_prestacion']);die;
+
 
 $rowEncabezado = '<tr>
 
@@ -66,18 +65,16 @@ $rowEncabezado = '<tr>
 </tr> <br> <br>';
 
 for ($posRegistro = 0; $posRegistro < count($prestaciones); $posRegistro++) {
-   if($prestaciones[$posRegistro]['estado'] == "En curso"){
-      for ($posLibro = 0; $posLibro < count($libros); $posLibro++) {
-         if($libros[$posLibro]['id'] == $prestaciones[$posRegistro]['id_libro']){
-            $rowProduct .= '<tr> 
-               <td class= "g--font-infoproduct g--border-top ">'.$prestaciones [$posRegistro] ["fecha_prestacion"] .'</td>
-               <td class= "g--font-infoproduct g--border-top ">    '.$prestaciones [$posRegistro] ["fecha_devolucion"] . '</td>
-               <td class = "g--border-top"></td>
-               <td class= "g--font-infoproduct g--border-top g--salto-210px">'. $libros[$posLibro]['name'] . '</td>
-               <td class = "g--salto-40px g--border-top"></td>
-               <td class= "g--font-infoproduct g--border-top">'. $prestaciones[$posRegistro]['estado'] .'</td>
-            </tr>';
-         }
+   for ($posLibro = 0; $posLibro < count($libros); $posLibro++) {
+      if($libros[$posLibro]['id'] == $prestaciones[$posRegistro]['id_libro']){
+         $rowProduct .= '<tr> 
+            <td class= "g--font-infoproduct g--border-top ">'.$prestaciones [$posRegistro] ["fecha_prestacion"] .'</td>
+            <td class= "g--font-infoproduct g--border-top ">    '.$prestaciones [$posRegistro] ["fecha_devolucion"] . '</td>
+            <td class = "g--border-top"></td>
+            <td class= "g--font-infoproduct g--border-top g--salto-210px">'. $libros[$posLibro]['name'] . '</td>
+            <td class = "g--salto-40px g--border-top"></td>
+            <td class= "g--font-infoproduct g--border-top">'. $prestaciones[$posRegistro]['estado'] .'</td>
+         </tr>';
       }
    }
 }
